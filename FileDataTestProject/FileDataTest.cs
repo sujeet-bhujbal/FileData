@@ -11,7 +11,7 @@ namespace FileDataTestProject
         {
             var inputParameters = new[] {"-v", " C:/test.txt"};
 
-            var output = Program.ReadVersion(inputParameters);
+            var output = Program.ReadVersionAndData(inputParameters);
             Assert.IsTrue(!string.IsNullOrEmpty(output));
         }
 
@@ -21,7 +21,7 @@ namespace FileDataTestProject
         {
             var inputParameters = new[] {"1", " C:/test.txt"};
 
-            var output = Program.ReadVersion(inputParameters);
+            var output = Program.ReadVersionAndData(inputParameters);
             Assert.IsTrue(string.IsNullOrEmpty(output));
         }
 
@@ -30,7 +30,7 @@ namespace FileDataTestProject
         public void GivenFileSize_processFileSize_ReturnFileSize()
         {
             var inputParameters = new[] {"-s", " C:/test.txt"};
-            var output = Program.ReadSize(inputParameters);
+            var output = Program.ReadVersionAndData(inputParameters);
             Assert.IsTrue(output > 0);
         }
 
@@ -39,8 +39,8 @@ namespace FileDataTestProject
         public void GivenInvalidFileSizeName_DoesNotProcessFileSize_ReturnFileSize()
         {
             var inputParameters = new[] {"-suj", " C:/test.txt"};
-            var output = Program.ReadSize(inputParameters);
-            Assert.IsTrue(output == 0);
+            var output = Program.ReadVersionAndData(inputParameters);
+            Assert.IsTrue(string.IsNullOrEmpty(output));
         }
     }
 }
